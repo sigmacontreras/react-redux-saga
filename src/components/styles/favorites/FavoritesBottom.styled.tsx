@@ -29,6 +29,19 @@ export const FavoritesBottomWrapper = styled.div`
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
+            .favourite-item {
+                width: calc(100%);
+                height: calc(100% / 3.5);
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 25%;
+                img {
+                    width: 125px;
+                    height: 125px;
+                }
+            }
             .favourite-item-empty {
                 width: calc(100%);
                 height: calc(100% / 3.5);
