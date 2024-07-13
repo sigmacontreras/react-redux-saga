@@ -1,10 +1,9 @@
 // src/components/HomeComponents.tsx
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchAllGreatSwords} from "../store/greatSwordsSlice.ts"
+import {allGreatSwords} from "../store/greatSwordsSlice.ts"
 import {RootState} from "../store/rootReducer";
 import {AppWrapper} from "./styles/App.styled.tsx";
-import {GreatSwordsProvider} from "../context/GreatSwordsContext.tsx";
 import {CatalogWrapper} from "./styles/Catalog.styled.tsx";
 import {ItemsContainer} from "./styles/items/ItemsContainer.styled.tsx";
 import {ItemsTopWrapper} from "./styles/items/ItemsTop.styled.tsx";
@@ -21,16 +20,15 @@ export default function HomeComponent() {
 
     useEffect(() => {
         console.log("dispatched fetchAllGreatSwords useEffect");
-        dispatch(fetchAllGreatSwords());
+        dispatch(allGreatSwords());
     }, [dispatch]);
 
     return (
         <AppWrapper>
-            <GreatSwordsProvider greatSwords={greatSwords}>
                 <CatalogWrapper>
                     <ItemsContainer>
                         <ItemsTopWrapper></ItemsTopWrapper>
-                        <ItemListComponent/>
+                        <ItemListComponent greatSwords={greatSwords}/>
                     </ItemsContainer>
                     <FavoritesContainer>
                         <FavoritesTopWrapper></FavoritesTopWrapper>
@@ -38,7 +36,6 @@ export default function HomeComponent() {
                     </FavoritesContainer>
                 </CatalogWrapper>
                 <ShoppingCartComponent/>
-            </GreatSwordsProvider>
         </AppWrapper>
     )
 }

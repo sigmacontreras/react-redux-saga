@@ -11,7 +11,7 @@ const initialState: ShoppingCartState = {
 };
 
 const shoppingCartSlice = createSlice({
-    name: 'shoppingCart',
+    name: 'fetch',
     initialState,
     reducers: {
         addItem: (state, action: PayloadAction<GreatSword>) => {

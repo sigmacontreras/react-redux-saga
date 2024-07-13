@@ -1,13 +1,15 @@
 // src/components/ItemListComponents.tsx
 import {ItemsBottomWrapper} from "./styles/items/ItemsBottom.styled.tsx";
-import {useGreatSwords} from '../context/hook.useGreatSwords.ts';
 import {useDispatch} from "react-redux";
 import {GreatSword} from "../lib/api.ts";
 import {addItem} from "../store/shoppingCartSlice.ts";
 import React, {useState} from "react";
 
-export default function ItemListComponent() {
-    const {greatSwords} = useGreatSwords();
+interface ItemListProps {
+    greatSwords: GreatSword[];
+}
+
+export default function ItemListComponent({greatSwords}: ItemListProps) {
     const dispatch = useDispatch();
     const [filterText, setFilterText] = useState('');
 
@@ -38,7 +40,7 @@ export default function ItemListComponent() {
                         key={greatSword.id}
                         className="product-container"
                         draggable onDragStart={(e) => handleDragStart(e, greatSword)}>
-                        <img alt="product" src={greatSword.url} />
+                        <img alt="product" src={greatSword.url}/>
                         <p>{greatSword.name.split("_").join(" ")}</p>
                         <button onClick={() => handleAddToCart(greatSword)}>Add to Cart</button>
                     </div>
